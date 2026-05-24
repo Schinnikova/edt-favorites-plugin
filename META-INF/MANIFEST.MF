@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EDT Favorites Plugin
+Bundle-SymbolicName: com.flowers7.edt.favorites;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.flowers7.edt.favorites.Activator
+Bundle-Vendor: FLOWERS7
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.navigator;bundle-version="3.12.200",
+ com._1c.g5.v8.dt.metadata;bundle-version="18.0.100",
+ com._1c.g5.v8.dt.md.ui;bundle-version="30.0.0",
+ com._1c.g5.v8.dt.navigator;bundle-version="14.0.100",
+ com._1c.g5.v8.dt.navigator.ui;bundle-version="13.0.100",
+ com._1c.g5.v8.dt.ui;bundle-version="23.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Automatic-Module-Name: com.flowers7.edt.favorites
+Bundle-ActivationPolicy: lazy

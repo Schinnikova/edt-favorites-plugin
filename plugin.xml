@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension point="org.eclipse.ui.decorators">
+      <decorator
+            class="com.flowers7.edt.favorites.FavoriteDecorator"
+            id="com.flowers7.edt.favorites.decorator"
+            label="Favorite Decorator"
+            lightweight="true"
+            state="true">
+      </decorator>
+   </extension>
+
+   <extension point="org.eclipse.ui.navigator.navigatorContent">
+      <actionProvider
+            class="com.flowers7.edt.favorites.FavoriteActionProvider"
+            id="com.flowers7.edt.favorites.actionProvider">
+         <enablement>
+            <instanceof value="com._1c.g5.v8.dt.metadata.mdclass.MdObject"/>
+         </enablement>
+      </actionProvider>
+      <commonFilter
+            class="com.flowers7.edt.favorites.FavoritesOnlyFilter"
+            id="com.flowers7.edt.favorites.filter"
+            name="Только избранное"
+            description="Показывать только объекты метаданных в избранном"
+            activeByDefault="false">
+      </commonFilter>
+   </extension>
+
+   <extension point="org.eclipse.ui.navigator.viewer">
+      <viewerActionBinding viewerId="com._1c.g5.v8.dt.ui2.navigator">
+         <includes>
+            <actionExtension pattern="com.flowers7.edt.favorites.actionProvider"/>
+         </includes>
+      </viewerActionBinding>
+      <viewerContentBinding viewerId="com._1c.g5.v8.dt.ui2.navigator">
+         <includes>
+            <contentExtension pattern="com.flowers7.edt.favorites.filter"/>
+         </includes>
+      </viewerContentBinding>
+   </extension>
+
+</plugin>
