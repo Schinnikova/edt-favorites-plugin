@@ -42,4 +42,34 @@
       </viewerContentBinding>
    </extension>
 
+   <!-- Команда для кнопки тулбара -->
+   <extension point="org.eclipse.ui.commands">
+      <command
+            id="com.flowers7.edt.favorites.toggleFilter"
+            name="Только избранное"
+            description="Показывать только избранные объекты метаданных">
+      </command>
+   </extension>
+
+   <!-- Обработчик команды -->
+   <extension point="org.eclipse.ui.handlers">
+      <handler
+            class="com.flowers7.edt.favorites.ToggleFavoritesFilterHandler"
+            commandId="com.flowers7.edt.favorites.toggleFilter">
+      </handler>
+   </extension>
+
+   <!-- Кнопка на тулбаре панели Навигатор -->
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="toolbar:com._1c.g5.v8.dt.ui2.navigator">
+         <command
+               commandId="com.flowers7.edt.favorites.toggleFilter"
+               icon="icons/filter_star.png"
+               tooltip="Только избранное"
+               style="toggle">
+         </command>
+      </menuContribution>
+   </extension>
+
 </plugin>

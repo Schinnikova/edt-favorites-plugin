@@ -29,7 +29,18 @@ public class FavoriteStore {
         if (element instanceof com._1c.g5.v8.dt.metadata.mdclass.MdObject) {
             com._1c.g5.v8.dt.metadata.mdclass.MdObject obj =
                 (com._1c.g5.v8.dt.metadata.mdclass.MdObject) element;
-            return obj.eClass().getName() + "." + obj.getName();
+            StringBuilder path = new StringBuilder();
+            org.eclipse.emf.ecore.EObject current = obj;
+            while (current != null) {
+                if (current instanceof com._1c.g5.v8.dt.metadata.mdclass.MdObject) {
+                    com._1c.g5.v8.dt.metadata.mdclass.MdObject mdObj =
+                        (com._1c.g5.v8.dt.metadata.mdclass.MdObject) current;
+                    if (path.length() > 0) path.insert(0, ".");
+                    path.insert(0, mdObj.eClass().getName() + ":" + mdObj.getName());
+                }
+                current = current.eContainer();
+            }
+            return path.toString();
         }
         return null;
     }

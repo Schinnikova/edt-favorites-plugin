@@ -14,13 +14,7 @@ public class FavoritesOnlyFilter extends ViewerFilter {
             return true;
         }
 
-        // Если это MdObject но не избранный — скрываем
-        if (element instanceof com._1c.g5.v8.dt.metadata.mdclass.MdObject) {
-            return false;
-        }
-
-        // Для всего остального (категории, проект, корень) —
-        // показываем только если внутри есть хоть один избранный
+        // Для всего (включая MdObject) — проверяем есть ли избранный потомок
         if (viewer instanceof org.eclipse.jface.viewers.AbstractTreeViewer) {
             org.eclipse.jface.viewers.AbstractTreeViewer treeViewer =
                 (org.eclipse.jface.viewers.AbstractTreeViewer) viewer;
@@ -44,10 +38,8 @@ public class FavoritesOnlyFilter extends ViewerFilter {
             if (FavoriteStore.isFavorite(child)) {
                 return true;
             }
-            if (!(child instanceof com._1c.g5.v8.dt.metadata.mdclass.MdObject)) {
-                if (hasFavoriteChild(viewer, child)) {
-                    return true;
-                }
+            if (hasFavoriteChild(viewer, child)) {
+                return true;
             }
         }
         return false;
